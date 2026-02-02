@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TXT to VCF Converter - Secure</styles
+    title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<button class="logout-btn" id="logoutBtn" style="display: none;">🚪 Logout</button>
+
+<div class="container">
+    <div class="header">
+        <h1>🔒 TXT to VCF Converter</h1>
+        <p>Konversi daftar kontak dengan aman dan mudah</p>
+    </div>
+
+    <!-- Step 0: Login -->
+    <div class="step active" id="step0">
+        <div class="login-section">
+            <h3>🔐 Autentikasi Token</h3>
+            <div class="input-group">
+                <label>Access Token</label>
+                <input 
+                    type="password" 
+                    id="tokenInput" 
+                    placeholder="Masukkan token akses..."
+                >
+            </div>
+            <button type="button" class="btn btn-primary" id="loginBtn">
+                Login
+            </button>
+        </div>
+    </div>
+
+    <!-- Step 1: Upload File -->
+    <div class="step" id="step1">
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📄</div>
+            <h3>Klik atau Drag & Drop</h3>
+            <p>File TXT (Maksimal 10MB)</p>
+            <input type="file" id="fileInput" accept=".txt">
+        </div>
+
+        <div class="format-info">
+            <h4>📋 Format File TXT yang Wajib:</h4>
+            <code>Nama|Nomor</code>
+            <ul>
+                <li>Setiap baris: nama dan nomor dipisah tanda <code>|</code></li>
+                <li>Contoh: <code>Muhamad Furqon|628123456789</code></li>
+                <li>Format nomor harus 62xxx tidak +62xxx</li>
+                <li>File txt dengan format ngawur akan ditolak!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Step 2: Preview & Naming -->
+    <div class="step" id="step2">
+        <div class="preview-section">
+            <div class="preview-header">
+                <h3>📊 Preview Kontak</h3>
+                <span class="contact-count" id="contactCount">0 kontak</span>
+            </div>
+            <div class="preview-box" id="previewBox"></div>
+            <div class="error-list" id="errorList" style="display: none;"></div>
+        </div>
+
+        <div class="naming-section">
+            <h3>✏️ Nama File Output</h3>
+            <div class="filename-input-group">
+                <input 
+                    type="text" 
+                    id="vcfFileName" 
+                    placeholder="Masukkan nama file..."
+                    maxlength="50"
+                >
+                <span class="extension">.vcf</span>
+            </div>
+            <p class="hint">Contoh: Bandung_Barat, Daftar_Keluarga, contacts_2024</p>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="convertBtn">
+            🔄 Download VCF
+        </button>
+        <button type="button" class="btn btn-secondary" id="backBtn">
+            ← Upload File Lain
+        </button>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p id="loadingText">Sedang memproses...</p>
+    </div>
+
+    <div class="message success-message" id="successMessage"></div>
+    <div class="message error-message" id="errorMessage"></div>
+    <div class="message warning-message" id="warningMessage"></div>
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
